@@ -269,11 +269,54 @@ public class SparseMatrix implements SparseInterface {
     	return matrix;
     }
     
-    public SparseInterface addMatrices (SparseInterface matrixToAdd){
+    public SparseInterface addMatrices (SparseMatrix matrixToAdd){
     	
+    	if (this.numRows != matrixToAdd.getNumRows() || this.numCols != matrixToAdd.getNumCols()){
+    		return null;
+    	}
+    	
+    	SparseInterface matrixSum = new SparseMatrix();
+    	matrixSum.setSize(matrixToAdd.numRows, matrixToAdd.numCols);
+    	Node cur = this.head;
+    	
+    	//create sum matrix with all the elements of the original matrix
+    	while (cur != null){
+    		matrixSum.addElement(cur.row, cur.col, cur.data);
+    		cur = cur.next;
+    	}
+    	Node curAdd = matrixToAdd.head;
+  	
+    	while (curAdd != null){
+    		//if element exists in matrixSum, add the data together to get correct sum
+    		if (matrixSum.getElement(curAdd.row, curAdd.col) != 0){
+    			matrixSum.addElement(curAdd.row, curAdd.col, matrixSum.getElement(curAdd.row, curAdd.col) + curAdd.data);
+    		}
+    		//if element doesnt exist in matrixSum, add element
+    		else if (matrixSum.getElement(curAdd.row, curAdd.col) == 0){
+    			matrixSum.addElement(curAdd.row, curAdd.col, curAdd.data);
+    		} 			
+    	}
+    	
+    	return matrixSum;
     }
     
-    public SparseInterface multiplyMatrices(SparseInterface matrixToMultiply){
+    public SparseInterface multiplyMatrices(SparseMatrix matrixToMultiply){
+    	if (this.numRows != matrixToMultiply.getNumCols() || this.numCols != matrixToMultiply.getNumRows()){
+    		return null;
+    	}
+    	SparseInterface matrixProduct = new SparseMatrix();
+    	matrixProduct.setSize(this.numRows, matrixToMultiply.numCols);
     	
+    	Node cur = this.head;
+    	
+    	//found row then col
+    	for (int x = 0; x < this.numCols; x++){
+    		for (int y = 0; y < this.numRows; y++){
+        		matrixProduct.addElement(x, y, this.getElement(x, y) * matrixToMultiply.getElement(x, y));
+
+    		}
+    	}
+    	
+    	return matrixProduct;
     }
 }

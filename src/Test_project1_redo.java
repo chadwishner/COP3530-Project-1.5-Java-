@@ -3,7 +3,7 @@ public class Test {
    
 
     public static void main(String[] args){
-        SparseInterface myTest = new SparseMatrix()
+        SparseInterface myTest = new SparseMatrix();
 
 	myTest.setSize(3, 3);
 
