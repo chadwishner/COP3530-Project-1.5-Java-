@@ -51,5 +51,5 @@ public interface SparseInterface {
     
     /*takes another matrix as input and returns the product of the two matrices*/
     /*return NULL if sizes incompatible*/
-    public SparseInterface s(SparseInterface matrixToMultiply);
+    public SparseInterface multiplyMatrices(SparseInterface matrixToMultiply);
 }

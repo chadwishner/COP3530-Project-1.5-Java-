@@ -308,12 +308,16 @@ public class SparseMatrix implements SparseInterface {
     	matrixProduct.setSize(this.numRows, matrixToMultiply.numCols);
     	
     	Node cur = this.head;
+    	int sum = 0;
     	
-    	//found row then col
-    	for (int x = 0; x < this.numCols; x++){
-    		for (int y = 0; y < this.numRows; y++){
-        		matrixProduct.addElement(x, y, this.getElement(x, y) * matrixToMultiply.getElement(x, y));
-
+    	for (int rowCounter = 0; rowCounter < this.numRows; rowCounter++){
+    		for (int colCounter = 0; colCounter < matrixToMultiply.numCols; colCounter++){
+        		sum = 0;
+        		while (cur.row == cur.next.row){
+        			sum += this.getElement(cur.row, cur.col) * matrixToMultiply.getElement(cur.col, cur.row);
+        		}
+        		
+        		matrixProduct.addElement(rowCounter, colCounter, sum);
     		}
     	}
     	
