@@ -1,12 +1,14 @@
 public class Test_project1_redo {
 
+   
+
     public static void main(String[] args){
         SparseInterface myTest = new SparseMatrix();
 
-        myTest.setSize(3, 3);
+	myTest.setSize(3, 3);
 
-        	System.out.println("Num Rows is 3: " + (myTest.getNumRows() == 3));
-        	System.out.println("Num Cols is 3: " + (myTest.getNumCols() == 3));
+        System.out.println("Num Rows is 3: " + (myTest.getNumRows() == 3));
+ 	System.out.println("Num Cols is 3: " + (myTest.getNumCols() == 3));
 
         myTest.addElement(0, 0, 16);
 
@@ -14,41 +16,42 @@ public class Test_project1_redo {
 
         myTest.removeElement(0,1);
 
-        	String correctString = "0 0 16\n";
+        String correctString = "0 0 16\n";
 
-        	System.out.println("toString is correct: " + correctString.equals(myTest.toString()));
+        System.out.println("toString is correct: " + correctString.equals(myTest.toString()));
 
-        myTest.removeElement(0,0);
+	myTest.removeElement(0,0);
         
+
         myTest.addElement(2,2,4);
 
         myTest.addElement(1,0,-3);
 
-        	correctString = "1 0 -3\n2 2 4\n";
+        correctString = "1 0 -3\n2 2 4\n";
 
-        	System.out.println("toString is correct: " + correctString.equals(myTest.toString()));
+        System.out.println("toString is correct: " + correctString.equals(myTest.toString()));
          
 
-        myTest.removeElement(2, 2);
+	myTest.removeElement(2, 2);
 
-        myTest.removeElement(1, 0);
+	myTest.removeElement(1, 0);
 
         myTest.addElement(0, 0, 0);
 
-        	correctString = "";
+        correctString = "";
 
-        	//Because we are not storing 0 values in the matrix the toString should reflect an "empty" (all 0) matrix.
-        	System.out.println("toString is correct: " + correctString.equals(myTest.toString()));
+        //Because we are not storing 0 values in the matrix the toString should reflect an "empty" (all 0) matrix.
+        System.out.println("toString is correct: " + correctString.equals(myTest.toString()));
 
         myTest.addElement(0, 1, 3);
 
         myTest.addElement(0, 1, 0);
 
-        	correctString = "";
+        correctString = "";
 
-        	//Note that adding 0 to the matrix overwrites the data at that position to 0 as defined in the interface description
-        	//Because we are not storing 0 values, we can remove the element at that position.
-        	System.out.println("toString is correct: " + correctString.equals(myTest.toString()));
+        //Note that adding 0 to the matrix overwrites the data at that position to 0 as defined in the interface description
+        //Because we are not storing 0 values, we can remove the element at that position.
+        System.out.println("toString is correct: " + correctString.equals(myTest.toString()));
 
         myTest.addElement(0, 0, 16);
         myTest.addElement(0, 1, 4);
@@ -56,16 +59,16 @@ public class Test_project1_redo {
         myTest.addElement(2, 2, 7);
         
         SparseInterface addTest1 = new SparseMatrix();
-        	addTest1.setSize(3, 3);
-        	addTest1.addElement(0, 0, 1);
-        	addTest1.addElement(1, 1, 2);
-        	addTest1.addElement(2, 2, 3);
+	addTest1.setSize(3, 3);
+        addTest1.addElement(0, 0, 1);
+        addTest1.addElement(1, 1, 2);
+        addTest1.addElement(2, 2, 3);
         
         SparseInterface addTest2 = new SparseMatrix();
-        	addTest2.setSize(3, 3);
-        	addTest2.addElement(0, 0, 3);
-        	addTest2.addElement(0, 0, 2);
-        	addTest2.addElement(0, 0, 1);
+	addTest2.setSize(3, 3);
+        addTest2.addElement(0, 0, 3);
+        addTest2.addElement(0, 0, 2);
+        addTest2.addElement(0, 0, 1);
         
         SparseInterface addTest3 = addTest1.addMatrices(addTest2);
         

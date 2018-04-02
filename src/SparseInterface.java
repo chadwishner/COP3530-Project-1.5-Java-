@@ -40,9 +40,25 @@ public interface SparseInterface {
      */
     public int getElement(int row, int col);
 
-    
-    public String toString();
+    /*
+    Should return the nonzero elements of your sparse matrix as a string.
+    The String should be k lines, where k is the number of nonzero elements.
+    Each line should be in the format "row column data" where row and column are the "coordinate" of the data and all are separated by spaces.
+    An empty matrix should return an empty string.
+    The print should be from left to right and from top to bottom (like reading a book) i.e. the matrix
 
+                                                     3 0 1
+                                                     0 2 0
+                                                     0 0 4
+
+                                                 Should print as:
+                                                     0 0 3
+                                                     0 2 1
+                                                     1 1 2
+                                                     2 2 4
+
+     */
+    public String toString();
 
     
     /*takes another matrix as input and returns the sum of the two matrices*/
