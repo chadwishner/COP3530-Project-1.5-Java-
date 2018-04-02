@@ -269,53 +269,46 @@ public class SparseMatrix implements SparseInterface {
     	return matrix;
     }
     
-    public SparseInterface addMatrices (SparseMatrix matrixToAdd){
+    public SparseInterface addMatrices (SparseInterface matrixToAdd){
     	
     	if (this.numRows != matrixToAdd.getNumRows() || this.numCols != matrixToAdd.getNumCols()){
     		return null;
     	}
     	
     	SparseInterface matrixSum = new SparseMatrix();
-    	matrixSum.setSize(matrixToAdd.numRows, matrixToAdd.numCols);
-    	Node cur = this.head;
+    	matrixSum.setSize(this.numRows, this.numCols);
     	
-    	//create sum matrix with all the elements of the original matrix
-    	while (cur != null){
-    		matrixSum.addElement(cur.row, cur.col, cur.data);
-    		cur = cur.next;
-    	}
-    	Node curAdd = matrixToAdd.head;
-  	
-    	while (curAdd != null){
-    		//if element exists in matrixSum, add the data together to get correct sum
-    		if (matrixSum.getElement(curAdd.row, curAdd.col) != 0){
-    			matrixSum.addElement(curAdd.row, curAdd.col, matrixSum.getElement(curAdd.row, curAdd.col) + curAdd.data);
+    	int data = 0;
+    	for (int row = 0; row < this.numRows; row++){
+    		for (int col = 0; col < this.numCols; col++){
+    			data = this.getElement(row, col) + matrixToAdd.getElement(row, col);
+    			matrixSum.addElement(row, col, data);
     		}
-    		//if element doesnt exist in matrixSum, add element
-    		else if (matrixSum.getElement(curAdd.row, curAdd.col) == 0){
-    			matrixSum.addElement(curAdd.row, curAdd.col, curAdd.data);
-    		} 			
     	}
     	
     	return matrixSum;
     }
     
-    public SparseInterface multiplyMatrices(SparseMatrix matrixToMultiply){
-    	if (this.numRows != matrixToMultiply.getNumCols() || this.numCols != matrixToMultiply.getNumRows()){
+    public SparseInterface multiplyMatrices(SparseInterface matrixToMultiply){
+    	if (this.getNumCols() != matrixToMultiply.getNumRows()){
     		return null;
     	}
     	SparseInterface matrixProduct = new SparseMatrix();
-    	matrixProduct.setSize(this.numRows, matrixToMultiply.numCols);
+    	matrixProduct.setSize(this.getNumRows(), matrixToMultiply.getNumCols());
     	
     	Node cur = this.head;
     	int sum = 0;
     	
-    	for (int rowCounter = 0; rowCounter < this.numRows; rowCounter++){
-    		for (int colCounter = 0; colCounter < matrixToMultiply.numCols; colCounter++){
+    	for (int rowCounter = 0; rowCounter < this.getNumRows(); rowCounter++){
+    		for (int colCounter = 0; colCounter < matrixToMultiply.getNumCols(); colCounter++){
         		sum = 0;
-        		while (cur.row == cur.next.row){
-        			sum += this.getElement(cur.row, cur.col) * matrixToMultiply.getElement(cur.col, cur.row);
+        		for (int counter = 0; counter < this.getNumCols(); counter++){
+        			sum += this.getElement(rowCounter, counter) * matrixToMultiply.getElement(counter, colCounter);
         		}
+        		
+//        		while (cur.row == cur.next.row){
+//        			sum += this.getElement(cur.row, cur.col) * matrixToMultiply.getElement(cur.col, cur.row);
+//        		}
         		
         		matrixProduct.addElement(rowCounter, colCounter, sum);
     		}

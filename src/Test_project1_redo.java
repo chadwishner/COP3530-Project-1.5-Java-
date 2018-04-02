@@ -107,6 +107,8 @@ public class Test_project1_redo {
 	SparseInterface test4 = test1.multiplyMatrices(test2); //should work
 	SparseInterface test5 = test2.multiplyMatrices(test1); //should return null
 
-        
+        System.out.println(test3);
+        System.out.println(test4);
+        System.out.println(test5);
     }
 }
