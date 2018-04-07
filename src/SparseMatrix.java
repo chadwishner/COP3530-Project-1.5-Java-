@@ -268,7 +268,10 @@ public class SparseMatrix implements SparseInterface {
     	//return string
     	return matrix;
     }
-    
+    /** add matrices
+     * O(n) where n is the amount of elements in an array
+     * @param SparseInterface 
+     */
     public SparseInterface addMatrices (SparseInterface matrixToAdd){
     	
     	if (this.numRows != matrixToAdd.getNumRows() || this.numCols != matrixToAdd.getNumCols()){
@@ -278,6 +281,7 @@ public class SparseMatrix implements SparseInterface {
     	SparseInterface matrixSum = new SparseMatrix();
     	matrixSum.setSize(this.numRows, this.numCols);
     	
+    	//add matrices index by index
     	int data = 0;
     	for (int row = 0; row < this.numRows; row++){
     		for (int col = 0; col < this.numCols; col++){
@@ -288,7 +292,10 @@ public class SparseMatrix implements SparseInterface {
     	
     	return matrixSum;
     }
-    
+    /** multiply matrices
+     *  O(n^3) where n is the amount of elements in a row/col
+     *  @param SparseInterface
+     */
     public SparseInterface multiplyMatrices(SparseInterface matrixToMultiply){
     	if (this.getNumCols() != matrixToMultiply.getNumRows()){
     		return null;
@@ -296,19 +303,15 @@ public class SparseMatrix implements SparseInterface {
     	SparseInterface matrixProduct = new SparseMatrix();
     	matrixProduct.setSize(this.getNumRows(), matrixToMultiply.getNumCols());
     	
-    	Node cur = this.head;
     	int sum = 0;
     	
+    	//multiply matrices by using a row counter, col counter, and then counter for how many times to use row
     	for (int rowCounter = 0; rowCounter < this.getNumRows(); rowCounter++){
     		for (int colCounter = 0; colCounter < matrixToMultiply.getNumCols(); colCounter++){
         		sum = 0;
         		for (int counter = 0; counter < this.getNumCols(); counter++){
         			sum += this.getElement(rowCounter, counter) * matrixToMultiply.getElement(counter, colCounter);
         		}
-        		
-//        		while (cur.row == cur.next.row){
-//        			sum += this.getElement(cur.row, cur.col) * matrixToMultiply.getElement(cur.col, cur.row);
-//        		}
         		
         		matrixProduct.addElement(rowCounter, colCounter, sum);
     		}
