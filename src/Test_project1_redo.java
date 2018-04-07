@@ -91,7 +91,7 @@ public class Test_project1_redo {
         System.out.println("\n MY TESTS:\n");
         
         SparseInterface myTest1 = new SparseMatrix();
-        	myTest1.setSize(5, 5);
+        	myTest1.setSize(3, 5);
         	
         	myTest1.addElement(0, 0, 1);
         	myTest1.addElement(0, 1, 2);
@@ -111,49 +111,49 @@ public class Test_project1_redo {
         	myTest1.addElement(2, 3, 4);
         	myTest1.addElement(2, 4, 5);
         	
-        	myTest1.addElement(3, 0, 1);
-        	myTest1.addElement(3, 1, 2);
-        	myTest1.addElement(3, 2, 3);
-        	myTest1.addElement(3, 3, 4);
-        	myTest1.addElement(3, 4, 5);
-        	
-        	myTest1.addElement(4, 0, 1);
-        	myTest1.addElement(4, 1, 2);
-        	myTest1.addElement(4, 2, 3);
-        	myTest1.addElement(4, 3, 4);
-        	myTest1.addElement(4, 4, 5);
+//        	myTest1.addElement(3, 0, 1);
+//        	myTest1.addElement(3, 1, 2);
+//        	myTest1.addElement(3, 2, 3);
+//        	myTest1.addElement(3, 3, 4);
+//        	myTest1.addElement(3, 4, 5);
+//        	
+//        	myTest1.addElement(4, 0, 1);
+//        	myTest1.addElement(4, 1, 2);
+//        	myTest1.addElement(4, 2, 3);
+//        	myTest1.addElement(4, 3, 4);
+//        	myTest1.addElement(4, 4, 5);
         SparseInterface myTest2 = new SparseMatrix();
-        	myTest2.setSize(5, 5);
+        	myTest2.setSize(5, 3);
         	
         	myTest2.addElement(0, 0, 1);
         	myTest2.addElement(0, 1, 2);
         	myTest2.addElement(0, 2, 3);
-        	myTest2.addElement(0, 3, 4);
-        	myTest2.addElement(0, 4, 5);
+//        	myTest2.addElement(0, 3, 4);
+//        	myTest2.addElement(0, 4, 5);
         	
         	myTest2.addElement(1, 0, 1);
         	myTest2.addElement(1, 1, 2);
         	myTest2.addElement(1, 2, 3);
-        	myTest2.addElement(1, 3, 4);
-        	myTest2.addElement(1, 4, 5);
+//        	myTest2.addElement(1, 3, 4);
+//        	myTest2.addElement(1, 4, 5);
         	
         	myTest2.addElement(2, 0, 1);
         	myTest2.addElement(2, 1, 2);
         	myTest2.addElement(2, 2, 3);
-        	myTest2.addElement(2, 3, 4);
-        	myTest2.addElement(2, 4, 5);
+//        	myTest2.addElement(2, 3, 4);
+//        	myTest2.addElement(2, 4, 5);
         	
         	myTest2.addElement(3, 0, 1);
         	myTest2.addElement(3, 1, 2);
         	myTest2.addElement(3, 2, 3);
-        	myTest2.addElement(3, 3, 4);
-        	myTest2.addElement(3, 4, 5);
+//        	myTest2.addElement(3, 3, 4);
+//        	myTest2.addElement(3, 4, 5);
         	
         	myTest2.addElement(4, 0, 1);
         	myTest2.addElement(4, 1, 2);
         	myTest2.addElement(4, 2, 3);
-        	myTest2.addElement(4, 3, 4);
-        	myTest2.addElement(4, 4, 5);
+//        	myTest2.addElement(4, 3, 4);
+//        	myTest2.addElement(4, 4, 5);
         
         	SparseInterface myTest3 = myTest1.multiplyMatrices(myTest2);
         	System.out.println(myTest3);
